@@ -1,8 +1,6 @@
-# service_type should be NodePort, ClusterIP or LoadBalancer
-service_type: ClusterIP
-replicas: 1
-pod:
-  image: "shalram/myapp-my_project"
-  tag: "latest"
-  target_port: 8000
-  port: 8000
+FROM python:3.9-slim
+COPY . /myapp
+WORKDIR /myapp
+RUN pip install flask boto3 prometheus_client
+EXPOSE 8000
+CMD ["python", "app.py"]
