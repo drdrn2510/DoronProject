@@ -92,8 +92,8 @@ podTemplate(cloud: 'kubernetes', containers: [
             git clone https://github.com/drdrn2510/DoronProject.git
             git clone https://github.com/drdrn2510/ArgoCD.git
             cd DoronProject
-            helm template my-app ../chart > ~/argocd/${appname}.yaml
-            cd argocd
+            helm template my-app ../chart > ~/ArgoCD/${appname}.yaml
+            cd ArgoCD
             helm template my-app ../chart > ${appname}.yaml
 			git config --global user.name 'Jenkins Bot'
             git config --global user.email 'jenkins-bot@example.com'
