@@ -1,5 +1,5 @@
 def appname = "hello-newapp"
-def repo = "liorshasha"  // Replace with your DockerHub username
+def repo = "shalram"  // Replace with your DockerHub username
 def appimage = "docker.io/${repo}/${appname}"
 def apptag = "${env.BUILD_NUMBER}"
 
@@ -89,15 +89,15 @@ podTemplate(cloud: 'kubernetes', containers: [
             chmod 700 get_helm.sh
             ./get_helm.sh
 
-            git clone https://github.com/Liorshasha/argo-repo.git
-            cd argo-repo
+            git clone https://github.com/drdrn2510/ArgoCD.git
+            cd argocd
             helm template my-app ../chart > ${appname}.yaml
 			git config --global user.name 'Jenkins Bot'
             git config --global user.email 'jenkins-bot@example.com'
             git config --global --add safe.directory \$(pwd)
             git add ${appname}.yaml
             git commit -m "push to git repo"
-	        git push https://x-access-token:${git_token}@github.com/Liorshasha/argo-repo.git HEAD:main
+	        git push https://x-access-token:${git_token}@github.com/drdrn2510/ArgoCD.git HEAD:main
 	
         
 			
